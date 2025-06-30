@@ -15,7 +15,7 @@
     --popover-foreground: 15 23 42;
 
     --primary: 14 165 233;
-    --primary-foreground: 248 250 252;
+    --primary-foreground: 255 255 255;
 
     --secondary: 241 245 249;
     --secondary-foreground: 15 23 42;
@@ -38,7 +38,7 @@
     --sidebar-background: 255 255 255;
     --sidebar-foreground: 15 23 42;
     --sidebar-primary: 14 165 233;
-    --sidebar-primary-foreground: 248 250 252;
+    --sidebar-primary-foreground: 255 255 255;
     --sidebar-accent: 241 245 249;
     --sidebar-accent-foreground: 15 23 42;
     --sidebar-border: 226 232 240;
@@ -58,10 +58,10 @@
 
 @layer components {
   .medical-gradient {
-    @apply bg-gradient-to-br from-medical-50 to-medical-100;
+    @apply bg-gradient-to-br from-blue-50 to-blue-100;
   }
 
   .glass-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+    @apply bg-white/95 backdrop-blur-sm border border-gray-200 shadow-lg;
   }
 }

@@ -45,54 +45,56 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-medical-50 to-medical-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
           <div className="flex justify-center mb-4">
-            <div className="h-12 w-12 bg-medical-500 rounded-xl flex items-center justify-center">
+            <div className="h-12 w-12 bg-blue-600 rounded-xl flex items-center justify-center">
               <Activity className="h-6 w-6 text-white" />
             </div>
           </div>
           <h1 className="text-2xl font-bold text-slate-900">DentalCare Portal</h1>
-          <p className="text-slate-600">Sign in to manage your dental care</p>
+          <p className="text-slate-700">Sign in to manage your dental care</p>
         </div>
 
-        <Card className="glass-card">
+        <Card className="bg-white/95 backdrop-blur-sm border border-gray-200 shadow-lg">
           <CardHeader>
-            <CardTitle>Sign In</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-slate-900">Sign In</CardTitle>
+            <CardDescription className="text-slate-600">
               Enter your credentials to access the system
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-slate-700">Email</Label>
                 <Input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
+                  className="text-slate-900"
                   required
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-slate-700">Password</Label>
                 <Input
                   id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
+                  className="text-slate-900"
                   required
                 />
               </div>
 
               <Button 
                 type="submit" 
-                className="w-full bg-medical-500 hover:bg-medical-600"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                 disabled={loading}
               >
                 {loading ? 'Signing in...' : 'Sign In'}
@@ -101,9 +103,9 @@ export const Login = () => {
           </CardContent>
         </Card>
 
-        <Card className="glass-card">
+        <Card className="bg-white/95 backdrop-blur-sm border border-gray-200 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-sm">
+            <CardTitle className="flex items-center gap-2 text-sm text-slate-900">
               <AlertCircle className="h-4 w-4" />
               Demo Credentials
             </CardTitle>
@@ -114,7 +116,7 @@ export const Login = () => {
                 key={index}
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs"
+                className="w-full justify-start text-xs text-slate-700 hover:text-slate-900"
                 onClick={() => handleDemoLogin(cred.email, cred.password)}
               >
                 <span className="font-medium">{cred.role}:</span>

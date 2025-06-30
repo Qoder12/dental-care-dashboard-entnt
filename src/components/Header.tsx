@@ -12,7 +12,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-white border-b border-slate-200 px-6 py-4">
+    <header className="bg-white border-b border-slate-200 px-6 py-4 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900">
@@ -26,7 +26,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Avatar>
-              <AvatarFallback className="bg-medical-100 text-medical-800">
+              <AvatarFallback className="bg-blue-100 text-blue-800 font-medium">
                 {user && getInitials(user.email)}
               </AvatarFallback>
             </Avatar>
@@ -40,7 +40,7 @@ export const Header = () => {
             variant="outline" 
             size="sm" 
             onClick={logout}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
           >
             <LogOut className="h-4 w-4" />
             Logout

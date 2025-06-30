@@ -54,60 +54,60 @@ export const Dashboard = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Patients</CardTitle>
-            <Users className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Total Patients</CardTitle>
+            <Users className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{totalPatients}</div>
-            <p className="text-xs text-muted-foreground">Active patient records</p>
+            <div className="text-2xl font-bold text-slate-900">{totalPatients}</div>
+            <p className="text-xs text-slate-600">Active patient records</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Upcoming Appointments</CardTitle>
-            <Clock className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Upcoming Appointments</CardTitle>
+            <Clock className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{upcomingAppointments.length}</div>
-            <p className="text-xs text-muted-foreground">Scheduled appointments</p>
+            <div className="text-2xl font-bold text-slate-900">{upcomingAppointments.length}</div>
+            <p className="text-xs text-slate-600">Scheduled appointments</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Monthly Revenue</CardTitle>
+            <DollarSign className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${totalRevenue}</div>
-            <p className="text-xs text-muted-foreground">From completed treatments</p>
+            <div className="text-2xl font-bold text-slate-900">${totalRevenue}</div>
+            <p className="text-xs text-slate-600">From completed treatments</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Treatments</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Pending Treatments</CardTitle>
+            <AlertTriangle className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{pendingTreatments.length}</div>
-            <p className="text-xs text-muted-foreground">Require attention</p>
+            <div className="text-2xl font-bold text-slate-900">{pendingTreatments.length}</div>
+            <p className="text-xs text-slate-600">Require attention</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Next Appointments */}
-        <Card>
+        <Card className="bg-white">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-medical-500" />
+            <CardTitle className="flex items-center gap-2 text-slate-900">
+              <Calendar className="h-5 w-5 text-blue-600" />
               Next 10 Appointments
             </CardTitle>
-            <CardDescription>Upcoming scheduled appointments</CardDescription>
+            <CardDescription className="text-slate-600">Upcoming scheduled appointments</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -137,13 +137,13 @@ export const Dashboard = () => {
         </Card>
 
         {/* Treatment Status */}
-        <Card>
+        <Card className="bg-white">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5 text-medical-500" />
+            <CardTitle className="flex items-center gap-2 text-slate-900">
+              <Activity className="h-5 w-5 text-blue-600" />
               Treatment Overview
             </CardTitle>
-            <CardDescription>Current treatment statistics</CardDescription>
+            <CardDescription className="text-slate-600">Current treatment statistics</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -204,7 +204,7 @@ const PatientDashboard = () => {
   const completedTreatments = patientIncidents.filter(i => i.status === 'Completed');
 
   if (!patient) {
-    return <div>Patient not found</div>;
+    return <div className="text-slate-900">Patient not found</div>;
   }
 
   return (
@@ -216,47 +216,47 @@ const PatientDashboard = () => {
 
       {/* Patient KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Upcoming Appointments</CardTitle>
-            <Calendar className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Upcoming Appointments</CardTitle>
+            <Calendar className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{upcomingAppointments.length}</div>
-            <p className="text-xs text-muted-foreground">Scheduled visits</p>
+            <div className="text-2xl font-bold text-slate-900">{upcomingAppointments.length}</div>
+            <p className="text-xs text-slate-600">Scheduled visits</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Completed Treatments</CardTitle>
-            <CheckCircle className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Completed Treatments</CardTitle>
+            <CheckCircle className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{completedTreatments.length}</div>
-            <p className="text-xs text-muted-foreground">Total treatments</p>
+            <div className="text-2xl font-bold text-slate-900">{completedTreatments.length}</div>
+            <p className="text-xs text-slate-600">Total treatments</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
-            <DollarSign className="h-4 w-4 text-medical-500" />
+            <CardTitle className="text-sm font-medium text-slate-700">Total Spent</CardTitle>
+            <DollarSign className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-slate-900">
               ${completedTreatments.reduce((sum, t) => sum + (t.cost || 0), 0)}
             </div>
-            <p className="text-xs text-muted-foreground">Treatment costs</p>
+            <p className="text-xs text-slate-600">Treatment costs</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Recent Appointments */}
-      <Card>
+      <Card className="bg-white">
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
-          <CardDescription>Your latest appointments and treatments</CardDescription>
+          <CardTitle className="text-slate-900">Recent Activity</CardTitle>
+          <CardDescription className="text-slate-600">Your latest appointments and treatments</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
