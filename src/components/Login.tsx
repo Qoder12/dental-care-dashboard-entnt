@@ -116,7 +116,7 @@ export const Login = () => {
                 key={index}
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs text-slate-700 hover:text-slate-900"
+                className="w-full justify-start text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-50"
                 onClick={() => handleDemoLogin(cred.email, cred.password)}
               >
                 <span className="font-medium">{cred.role}:</span>
