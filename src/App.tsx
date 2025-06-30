@@ -8,6 +8,10 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { Layout } from "./components/Layout";
 import { Login } from "./components/Login";
 import { Dashboard } from "./components/Dashboard";
+import { PatientsPage } from "./components/PatientsPage";
+import { AppointmentsPage } from "./components/AppointmentsPage";
+import { CalendarView } from "./components/CalendarView";
+import { MyAppointments } from "./components/MyAppointments";
 
 const queryClient = new QueryClient();
 
@@ -22,13 +26,22 @@ const AppContent = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/patients" element={<div>Patients Page - Coming Soon</div>} />
-        <Route path="/appointments" element={<div>Appointments Page - Coming Soon</div>} />
-        <Route path="/incidents" element={<div>Incidents Page - Coming Soon</div>} />
-        <Route path="/reports" element={<div>Reports Page - Coming Soon</div>} />
-        <Route path="/profile" element={<div>Profile Page - Coming Soon</div>} />
-        <Route path="/my-appointments" element={<div>My Appointments - Coming Soon</div>} />
-        <Route path="/medical-history" element={<div>Medical History - Coming Soon</div>} />
+        {user.role === 'Admin' && (
+          <>
+            <Route path="/patients" element={<PatientsPage />} />
+            <Route path="/appointments" element={<AppointmentsPage />} />
+            <Route path="/calendar" element={<CalendarView />} />
+            <Route path="/incidents" element={<div>Incidents Page - Coming Soon</div>} />
+            <Route path="/reports" element={<div>Reports Page - Coming Soon</div>} />
+          </>
+        )}
+        {user.role === 'Patient' && (
+          <>
+            <Route path="/profile" element={<div>Profile Page - Coming Soon</div>} />
+            <Route path="/my-appointments" element={<MyAppointments />} />
+            <Route path="/medical-history" element={<div>Medical History - Coming Soon</div>} />
+          </>
+        )}
       </Routes>
     </Layout>
   );
