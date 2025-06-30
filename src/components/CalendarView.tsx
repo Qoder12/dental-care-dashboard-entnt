@@ -37,11 +37,11 @@ export const CalendarView = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Completed': return 'bg-green-100 text-green-800';
-      case 'In Progress': return 'bg-blue-100 text-blue-800';
-      case 'Scheduled': return 'bg-yellow-100 text-yellow-800';
-      case 'Cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'Completed': return 'bg-green-100 text-green-800 border-green-200';
+      case 'In Progress': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'Scheduled': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'Cancelled': return 'bg-red-100 text-red-800 border-red-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
@@ -60,8 +60,8 @@ export const CalendarView = () => {
         {/* Calendar */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CalendarIcon className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-slate-900">
+              <CalendarIcon className="h-5 w-5 text-blue-600" />
               {format(selectedDate, 'MMMM yyyy')}
             </CardTitle>
             <CardDescription>
@@ -91,7 +91,7 @@ export const CalendarView = () => {
         {/* Today's Appointments */}
         <Card>
           <CardHeader>
-            <CardTitle>Today's Appointments</CardTitle>
+            <CardTitle className="text-slate-900">Today's Appointments</CardTitle>
             <CardDescription>
               {format(new Date(), 'MMMM dd, yyyy')}
             </CardDescription>
@@ -101,15 +101,15 @@ export const CalendarView = () => {
               {getAppointmentsForDate(new Date()).map((appointment) => {
                 const patient = patients.find(p => p.id === appointment.patientId);
                 return (
-                  <div key={appointment.id} className="p-3 bg-slate-50 rounded-lg">
+                  <div key={appointment.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-medium text-slate-900">{patient?.name}</p>
-                      <Badge className={getStatusColor(appointment.status)}>
+                      <Badge className={`border ${getStatusColor(appointment.status)}`}>
                         {appointment.status}
                       </Badge>
                     </div>
-                    <p className="text-sm text-slate-600">{appointment.title}</p>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-sm text-slate-700">{appointment.title}</p>
+                    <p className="text-xs text-slate-600">
                       {format(new Date(appointment.appointmentDate), 'h:mm a')}
                     </p>
                   </div>
@@ -128,7 +128,7 @@ export const CalendarView = () => {
       {/* Monthly Overview */}
       <Card>
         <CardHeader>
-          <CardTitle>Monthly Overview</CardTitle>
+          <CardTitle className="text-slate-900">Monthly Overview</CardTitle>
           <CardDescription>
             Appointment summary for {format(selectedDate, 'MMMM yyyy')}
           </CardDescription>
@@ -141,7 +141,7 @@ export const CalendarView = () => {
                 <div
                   key={day.toISOString()}
                   className={`p-2 border rounded cursor-pointer hover:bg-slate-50 ${
-                    dayAppointments.length > 0 ? 'bg-blue-50 border-blue-200' : ''
+                    dayAppointments.length > 0 ? 'bg-blue-50 border-blue-200' : 'border-slate-200'
                   }`}
                   onClick={() => handleDateSelect(day)}
                 >
@@ -149,7 +149,7 @@ export const CalendarView = () => {
                     {format(day, 'd')}
                   </div>
                   {dayAppointments.length > 0 && (
-                    <div className="text-xs text-blue-600 mt-1">
+                    <div className="text-xs text-blue-700 mt-1">
                       {dayAppointments.length} appointment{dayAppointments.length !== 1 ? 's' : ''}
                     </div>
                   )}
@@ -164,7 +164,7 @@ export const CalendarView = () => {
       <Dialog open={showDayDialog} onOpenChange={setShowDayDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="text-slate-900">
               Appointments for {format(selectedDate, 'MMMM dd, yyyy')}
             </DialogTitle>
             <DialogDescription>
@@ -175,14 +175,14 @@ export const CalendarView = () => {
             {selectedDayAppointments.map((appointment) => {
               const patient = patients.find(p => p.id === appointment.patientId);
               return (
-                <div key={appointment.id} className="p-4 border rounded-lg">
+                <div key={appointment.id} className="p-4 border border-slate-200 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div>
                       <h3 className="font-medium text-slate-900">{appointment.title}</h3>
                       <p className="text-sm text-slate-600">Patient: {patient?.name}</p>
                     </div>
                     <div className="text-right">
-                      <Badge className={getStatusColor(appointment.status)}>
+                      <Badge className={`border ${getStatusColor(appointment.status)}`}>
                         {appointment.status}
                       </Badge>
                       <p className="text-sm text-slate-500 mt-1">

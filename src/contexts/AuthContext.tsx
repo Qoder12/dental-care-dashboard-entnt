@@ -78,7 +78,7 @@ const INITIAL_PATIENTS: Patient[] = [
     contact: '1234567890',
     email: 'john@entnt.in',
     address: '123 Main St, New York, NY 10001',
-    healthInfo: 'No known allergies',
+    healthInfo: 'No known allergies. Regular dental checkups.',
     bloodGroup: 'O+',
     allergies: 'None',
     emergencyContact: '9876543210',
@@ -91,9 +91,9 @@ const INITIAL_PATIENTS: Patient[] = [
     contact: '2345678901',
     email: 'jane@entnt.in',
     address: '456 Oak Ave, Los Angeles, CA 90210',
-    healthInfo: 'Diabetic, takes medication',
+    healthInfo: 'Diabetic, takes medication daily. History of gum disease.',
     bloodGroup: 'A+',
-    allergies: 'Penicillin',
+    allergies: 'Penicillin, Latex',
     emergencyContact: '8765432109',
     createdAt: '2024-02-10T14:30:00Z'
   },
@@ -104,9 +104,9 @@ const INITIAL_PATIENTS: Patient[] = [
     contact: '3456789012',
     email: 'bob@entnt.in',
     address: '789 Pine Rd, Chicago, IL 60601',
-    healthInfo: 'High blood pressure',
+    healthInfo: 'High blood pressure, previous root canal treatment.',
     bloodGroup: 'B-',
-    allergies: 'Latex',
+    allergies: 'Latex, Aspirin',
     emergencyContact: '7654321098',
     createdAt: '2024-03-05T09:15:00Z'
   }
@@ -117,51 +117,93 @@ const INITIAL_INCIDENTS: Incident[] = [
     id: 'i1',
     patientId: 'p1',
     title: 'Routine Cleaning',
-    description: 'Regular dental cleaning and checkup',
-    comments: 'Patient has good oral hygiene',
+    description: 'Regular dental cleaning and fluoride treatment',
+    comments: 'Patient has excellent oral hygiene. No issues found.',
     appointmentDate: '2024-07-15T10:00:00',
     cost: 120,
-    treatment: 'Cleaning and fluoride treatment',
+    treatment: 'Professional cleaning, fluoride application, oral health assessment',
     status: 'Completed',
-    files: [],
+    files: [
+      {
+        id: 'f1',
+        name: 'cleaning_invoice.pdf',
+        type: 'application/pdf',
+        url: 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPD4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQovQ29udGVudHMgNCAwIFIKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0xlbmd0aCA0NAo+PgpzdHJlYW0KQJQL0+4BXQJKQ4AJZlhZgMZgJgBhBwC6ZwJoATM4oZvJU5ZAH0Ak8BkBg8ACCAA8AEQAVABMAEoARABDACEAAAA8eNoBXkJT8M8Acxwyk8lgASkB8DYGZAAgOhYZgcHQGgJLaWJVAELc2sSXZP8GZBBBIKzSzqAJc8sEDRsZGcCAQGAgID8yNdoAAkAALNAQQ4e8tKQcAAAaAFCCM0ZCZQgHJQJ7VXQJTABGQAR2AAAAVgAQBgAIZBEKJApAAQAAaGRZeU1m3jOAA8dkBmY7oGAQfHJgJQKChAIHkJGCAOgOyZcUmAALAZgIAAdEAUADQAFAZEaAJAQYRAR2CAAyAAaCAUADQAFAAEAFQARABUAFQARAAD2CyAAAQAVABEAFYH5JHgA=',
+        size: 12480
+      }
+    ],
     createdAt: '2024-06-01T10:00:00Z'
   },
   {
     id: 'i2',
     patientId: 'p1',
-    title: 'Toothache Consultation',
-    description: 'Patient complaining of tooth pain',
-    comments: 'Upper molar sensitivity to cold',
-    appointmentDate: '2024-07-20T14:30:00',
+    title: 'Tooth Sensitivity Treatment',
+    description: 'Treatment for cold sensitivity in upper molar',
+    comments: 'Applied desensitizing gel. Patient reports improvement.',
+    appointmentDate: '2024-08-01T14:30:00',
     cost: 80,
-    treatment: 'Examination and X-ray',
+    treatment: 'Desensitizing treatment, fluoride varnish application',
     status: 'Completed',
-    nextDate: '2024-08-01T10:00:00',
+    nextDate: '2024-09-15T14:30:00',
     files: [],
     createdAt: '2024-06-15T14:00:00Z'
   },
   {
     id: 'i3',
     patientId: 'p2',
-    title: 'Cavity Filling',
-    description: 'Fill cavity in lower left molar',
-    comments: 'Patient was nervous but cooperative',
-    appointmentDate: '2024-07-25T11:00:00',
-    status: 'Scheduled',
-    files: [],
+    title: 'Composite Filling',
+    description: 'Small cavity filling in lower left molar',
+    comments: 'Patient tolerated procedure well. No complications.',
+    appointmentDate: '2024-08-10T11:00:00',
+    cost: 150,
+    treatment: 'Composite resin filling, bite adjustment',
+    status: 'Completed',
+    files: [
+      {
+        id: 'f2',
+        name: 'xray_before.jpg',
+        type: 'image/jpeg',
+        url: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
+        size: 2048
+      }
+    ],
     createdAt: '2024-06-20T11:00:00Z'
   },
   {
     id: 'i4',
     patientId: 'p3',
-    title: 'Root Canal',
-    description: 'Root canal treatment for infected tooth',
-    comments: 'Multiple sessions required',
+    title: 'Root Canal Treatment - Session 1',
+    description: 'Initial root canal procedure for infected tooth #14',
+    comments: 'Infection present, cleaned canals, temporary filling placed.',
     appointmentDate: '2024-07-30T09:00:00',
-    status: 'In Progress',
-    nextDate: '2024-08-05T09:00:00',
+    cost: 400,
+    treatment: 'Root canal cleaning, disinfection, temporary filling',
+    status: 'Completed',
+    nextDate: '2024-08-15T09:00:00',
     files: [],
     createdAt: '2024-06-25T09:00:00Z'
+  },
+  {
+    id: 'i5',
+    patientId: 'p1',
+    title: 'Teeth Whitening',
+    description: 'Professional teeth whitening treatment',
+    comments: 'Patient very satisfied with results.',
+    appointmentDate: '2024-09-15T14:30:00',
+    status: 'Scheduled',
+    files: [],
+    createdAt: '2024-07-01T14:00:00Z'
+  },
+  {
+    id: 'i6',
+    patientId: 'p2',
+    title: 'Periodontal Maintenance',
+    description: 'Deep cleaning and gum health assessment',
+    comments: 'Gum inflammation reduced significantly.',
+    appointmentDate: '2024-08-20T10:00:00',
+    status: 'Scheduled',
+    files: [],
+    createdAt: '2024-07-05T10:00:00Z'
   }
 ];
 

@@ -12,6 +12,9 @@ import { PatientsPage } from "./components/PatientsPage";
 import { AppointmentsPage } from "./components/AppointmentsPage";
 import { CalendarView } from "./components/CalendarView";
 import { MyAppointments } from "./components/MyAppointments";
+import { PatientProfile } from "./components/PatientProfile";
+import { MedicalHistory } from "./components/MedicalHistory";
+import { ReportsPage } from "./components/ReportsPage";
 
 const queryClient = new QueryClient();
 
@@ -31,15 +34,15 @@ const AppContent = () => {
             <Route path="/patients" element={<PatientsPage />} />
             <Route path="/appointments" element={<AppointmentsPage />} />
             <Route path="/calendar" element={<CalendarView />} />
-            <Route path="/incidents" element={<div>Incidents Page - Coming Soon</div>} />
-            <Route path="/reports" element={<div>Reports Page - Coming Soon</div>} />
+            <Route path="/incidents" element={<ReportsPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
           </>
         )}
         {user.role === 'Patient' && (
           <>
-            <Route path="/profile" element={<div>Profile Page - Coming Soon</div>} />
+            <Route path="/profile" element={<PatientProfile />} />
             <Route path="/my-appointments" element={<MyAppointments />} />
-            <Route path="/medical-history" element={<div>Medical History - Coming Soon</div>} />
+            <Route path="/medical-history" element={<MedicalHistory />} />
           </>
         )}
       </Routes>
